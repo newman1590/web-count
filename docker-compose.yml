@@ -1,11 +1,12 @@
-version: '3.8'
+version: '3.3'     # 버전 에러가 발생해서 3.8에서 3.3으로 수정
 services:
   webserver:
-    build: .
+    #build: .   # jenkins에서 이미 build가 되어 host에 pull되므로 build 생략
+    image: newman1590/web_count:v1.0  # Jenkinsfile에서 작성한 docker image:tag 지정
     ports:
-     - "8899:8899"
+      - "8899:8899"
     depends_on:
-     - redis
-
+      - redis
   redis:
     image: redis:6.0
+
